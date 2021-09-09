@@ -13,7 +13,7 @@ import edu.eci.arsw.blueprints.services.BlueprintsServices;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void maina(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
     	BlueprintsServices bps = ac.getBean(BlueprintsServices.class);
     	

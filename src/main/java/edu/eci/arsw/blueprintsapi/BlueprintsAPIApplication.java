@@ -5,10 +5,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"edu.eci.arsw.blueprints"})
+@ComponentScan(basePackages = {"edu.eci.arsw.blueprintsapi"})
 public class BlueprintsAPIApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BlueprintsAPIApplication.class, args);
+		try {
+			SpringApplication.run(BlueprintsAPIApplication.class, args);
+		} catch (Exception e) {
+			System.out.println("\n##################################\n##################################");
+			System.out.println(e.getMessage());
+			System.out.println("##################################\n##################################\n");
+		}
 	}
 }
