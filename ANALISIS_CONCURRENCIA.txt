@@ -1,0 +1,1 @@
+La condición de carrera se presenta en el momento que los diferentes hilos intentan acceder a la clase BlueprintPersistence, esta es la sección crítica y donde se presentan problemas, para solucionarlo, se debe crear exclusión mutua con sincronización
