@@ -82,4 +82,16 @@ public class BlueprintAPIController {
 			return new ResponseEntity<>("Action has been rejected.", HttpStatus.FORBIDDEN);
 		}
 	}
+
+	@RequestMapping(method = RequestMethod.PUT,path = "{author}/{bpname}")	
+	public ResponseEntity<?> putBlueprintManager(@PathVariable String author, @RequestBody String bpname){
+	    try {
+	        service.getBlueprint(author, bpname);
+	        return new ResponseEntity<>(HttpStatus.CREATED);
+	    } catch (Exception ex) {
+	        Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
+	        return new ResponseEntity<>("Error 400",HttpStatus.NOT_FOUND);        
+	    }        
+
+	}
 }
