@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -69,5 +70,16 @@ public class BlueprintAPIController {
 			return new ResponseEntity<>("The plane named '"+bpname+"' has not been found.", HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(blueprintByNameAndAuthor, HttpStatus.ACCEPTED);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<?> postBlueprintManager(@RequestBody Blueprint newblueprint) {
+		try {
+			service.addNewBlueprint(newblueprint);
+			return new ResponseEntity<>(HttpStatus.CREATED);
+		} catch (Exception e) {
+			Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, e);
+			return new ResponseEntity<>("Action has been rejected.", HttpStatus.FORBIDDEN);
+		}
 	}
 }
